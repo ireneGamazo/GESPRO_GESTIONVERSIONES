@@ -7,14 +7,14 @@ addons:
     branches:
     - master
     - develop
-
+    
 env:
   global:
   - ANDROID_API=26
   - EMULATOR_API=26
   - ANDROID_BUILD_TOOLS=26.0.1
   - ADB_INSTALL_TIMEOUT=5
-
+  
 android:
   components:
   - tools
@@ -29,7 +29,7 @@ android:
   - addon-google_apis-google-19
   - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
   - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
-
+  
   licenses:
   - android-sdk-preview-license-.+
   - android-sdk-license-.+
@@ -62,8 +62,8 @@ before_script:
 
 script:
     # Compile and run lint
-     - ./gradlew clean assembleProdRelease lint --stacktrace
-    # Run test coverage report
+    - ./gradlew assembleProdRelease lint
+     # Run test coverage report
 #    - ./gradlew jacocoTestMockDebugUnitTestReport
     # Run SonarQube analysis
 #    - ./gradlew sonarqube
@@ -75,7 +75,7 @@ script:
     #- android-wait-for-emulator
     #- adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
     #- ./gradlew connectedMockDebugAndroidTest
-
+    
 after_success:
 #    - bash <(curl -s https://codecov.io/bash)
 
